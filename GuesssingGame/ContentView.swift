@@ -7,10 +7,16 @@
 
 import SwiftUI
 
-struct GuessingGame: View {
+struct ContentView: View {
     
     // creat the user is guessing
     @State var currentGuess = 50.0
+    
+    @State var feedback = ""
+    
+    
+    
+    
     // Generate random number
     let target = Int.random(in: 1...100)
     
@@ -19,11 +25,11 @@ struct GuessingGame: View {
     var body: some View {
         VStack{
             
-            HStack{
+            HStack {
               Spacer()
-                Text("\( String(format: "%.0f", currentGuess)) ")
+                Text("\(String(format: "%.0f", currentGuess))")
                     .font(.title)
-                    .bold
+                    .bold()
              
             }
             
@@ -59,10 +65,10 @@ struct GuessingGame: View {
 
 
 
-struct GuessingGame_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            GuessingGame()
+            ContentView()
                 .preferredColorScheme(.dark)
         }
     }
