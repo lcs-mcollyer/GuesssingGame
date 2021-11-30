@@ -15,8 +15,6 @@ struct ContentView: View {
     @State var feedback = ""
     
     
-    
-    
     // Generate random number
     let target = Int.random(in: 1...100)
     
@@ -26,11 +24,11 @@ struct ContentView: View {
         VStack{
             
             HStack {
-              Spacer()
+                Spacer()
                 Text("\(String(format: "%.0f", currentGuess))")
                     .font(.title)
                     .bold()
-             
+                Spacer()
             }
             
             
@@ -46,7 +44,25 @@ struct ContentView: View {
                    maximumValueLabel: {
                 Text("100.0")
             })
+            
+            
+            
             Button(action: {
+                
+                
+                // Create a temporary constant with the guess as an interger
+                let currentGuessAsInterger = Int(currentGuess)
+                
+                
+                // Check the users guess
+                if currentGuessAsInterger > target {
+                    feedback = "Guess Lower next time."
+                    
+                } else if currentGuessAsInterger < target{
+                    feedback = "Guess Higher nex time."
+                } else {
+                    feedback = "You Guess It!"
+                }
                 print("Guess Submitted")
             }, label: {
                 Text("Submit Guess")
